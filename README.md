@@ -1,1 +1,1 @@
-# pyObfusactor
+# pyObfuscator
