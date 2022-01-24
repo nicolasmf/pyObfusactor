@@ -1,1 +1,9 @@
-exec("""import codecs\nimport cmath\nqmwMFOlozyzlRvVPJVpkSyfIWENATLRiaAtvYqF = 1\nfygqaFRdTCGQhPBhIUNEQlYffpknQWEY = 5\nHNczkiodEJIJYSqqqItXvgozqIcuxgmxjpZaR = 6\nhasOxeLLEHnlyXlLFUZXEiIEYkoIScTXyInXZuPbSdVrHnD = (fygqaFRdTCGQhPBhIUNEQlYffpknQWEY**2) - (4*qmwMFOlozyzlRvVPJVpkSyfIWENATLRiaAtvYqF*HNczkiodEJIJYSqqqItXvgozqIcuxgmxjpZaR)\nxgWqvdMWOjAQcbFlDNsbWTxmuUyImtocyb = (-fygqaFRdTCGQhPBhIUNEQlYffpknQWEY-cmath.sqrt(hasOxeLLEHnlyXlLFUZXEiIEYkoIScTXyInXZuPbSdVrHnD))/(2*qmwMFOlozyzlRvVPJVpkSyfIWENATLRiaAtvYqF)\nkcvPpecQYUlMtyictAcZtmnoZVxNLUTDLMkbZEBzdRR = (-fygqaFRdTCGQhPBhIUNEQlYffpknQWEY+cmath.sqrt(hasOxeLLEHnlyXlLFUZXEiIEYkoIScTXyInXZuPbSdVrHnD))/(2*qmwMFOlozyzlRvVPJVpkSyfIWENATLRiaAtvYqF)\nprint(codecs.decode('Gur fbyhgvba ner {0} naq {1}', 'rot13').format(xgWqvdMWOjAQcbFlDNsbWTxmuUyImtocyb,kcvPpecQYUlMtyictAcZtmnoZVxNLUTDLMkbZEBzdRR))\n""")
+import codecs
+import cmath
+JoSLohHsipHVoTyiYfFkMyuxpfthRAOtfwStPXSLGBF = 1
+dCCZqUSLPbZOqFUIjZvXgwNwiuuBEw = 5
+xXBYygjcDKTQVDqQlHlEBARwTnCszpnWGkjMpdWLZfLVYEc = 6
+pyFMiTUpqCrqzZNGHWnvFgaMoWkFwVg = (dCCZqUSLPbZOqFUIjZvXgwNwiuuBEw**2) - (4*JoSLohHsipHVoTyiYfFkMyuxpfthRAOtfwStPXSLGBF*xXBYygjcDKTQVDqQlHlEBARwTnCszpnWGkjMpdWLZfLVYEc)
+oiXlIYCxfdJqHdfohChOzmufAQIukPHkVKPrVVEeMn = (-dCCZqUSLPbZOqFUIjZvXgwNwiuuBEw-cmath.sqrt(pyFMiTUpqCrqzZNGHWnvFgaMoWkFwVg))/(2*JoSLohHsipHVoTyiYfFkMyuxpfthRAOtfwStPXSLGBF)
+OQIZeTDpdVnpahgyeEUmACQYctwospDXjghFjsWSEPvtbudFEH = (-dCCZqUSLPbZOqFUIjZvXgwNwiuuBEw+cmath.sqrt(pyFMiTUpqCrqzZNGHWnvFgaMoWkFwVg))/(2*JoSLohHsipHVoTyiYfFkMyuxpfthRAOtfwStPXSLGBF)
+print('The solution are {0} and {1}'.format(oiXlIYCxfdJqHdfohChOzmufAQIukPHkVKPrVVEeMn,OQIZeTDpdVnpahgyeEUmACQYctwospDXjghFjsWSEPvtbudFEH))

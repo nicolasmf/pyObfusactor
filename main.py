@@ -13,7 +13,7 @@ def findFunctionNames(file):
 def findVariableNames(file):
 	variable_names = []
 	for _, line in enumerate(open(file)):
-		regex = r"((\w+)(?=( ||\t)=( |)))|((?<=\()\w+(?=\)))|((?<=\()\w+(?=,))|((?<=, )\w+(?=,))|((?<=, )\w+(?=\)))|(\w+(?=, ))"
+		regex = r"(?!\S*_+ )((\w+)(?=( ||\t)=( |)))|((?<=\()\w+(?=\)))|((?<=\()\w+(?=,))|((?<=, )\w+(?=,))|((?<=, )\w+(?=\)))|(\w+(?=, ))"
 		for name in re.findall(regex, line):
 			variable_names.append(list(filter((lambda x: x!='' and x!=' '), name))[0])
 	return list(set(variable_names))
@@ -35,8 +35,8 @@ def obfuscate(name_map, code_file):
 		filedata = file.read()
 
 	filedata = deleteComments(filedata)
-	filedata = replaceFromMap(name_map, filedata)
 	filedata = deleteEmptyLines(filedata)
+	filedata = replaceFromMap(name_map, filedata)
 	filedata = replacePrintedStrings(filedata)
 	filedata = importCodecs(filedata)
 	filedata = oneLiner(filedata)
@@ -72,10 +72,10 @@ def deleteEmptyLines(filedata):
 
 def replacePrintedStrings(filedata):
 
-	for string in re.findall(r'(".*")|(\'.*\')', filedata):
+	for string in re.findall(r'"(.*?)"|\'(.*?)\'', filedata):
 
-		string = ''.join(list(filter((lambda x: x!=''), string)))
-		
+		string = '"' + ''.join(list(filter((lambda x: x!=''), string))) + '"'
+
 		filedata = filedata.replace(string, 'codecs.decode('+ codecs.encode(string, 'rot13') +', \'rot13\')')
 	return filedata
 
