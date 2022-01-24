@@ -1,17 +1,17 @@
-def bar(name):
-	print(name)
+# Solve the quadratic equation ax**2 + bx + c = 0
 
-# This is a comment
+# import complex math module
+import cmath
 
-"""
-Multi
+a = 1
+b = 5
+c = 6
 
-Line comment!
-"""
+# calculate the discriminant
+d = (b**2) - (4*a*c)
 
-def foo(x, y, z):
-	print("This is definitely not a function.") # inline comment
+# find two solutions
+sol1 = (-b-cmath.sqrt(d))/(2*a)
+sol2 = (-b+cmath.sqrt(d))/(2*a)
 
-var1, variable1 = 1
-
-variable2=2
+print('The solution are {0} and {1}'.format(sol1,sol2))

@@ -1,7 +1,7 @@
-from keyword import iskeyword
 import random
 import re
 import string
+import codecs
 
 def findFunctionNames(file):
 	function_names = []
@@ -37,6 +37,9 @@ def obfuscate(name_map, code_file):
 	filedata = deleteComments(filedata)
 	filedata = replaceFromMap(name_map, filedata)
 	filedata = deleteEmptyLines(filedata)
+	filedata = replacePrintedStrings(filedata)
+	filedata = importCodecs(filedata)
+	filedata = oneLiner(filedata)
 
 	with open('obfuscated.py', 'w') as file:
 		file.write(filedata)
@@ -50,7 +53,7 @@ def deleteComments(filedata):
 def replaceFromMap(name_map, filedata):
 
 	for key, value in name_map.items():
-		filedata = filedata.replace(key, value)
+		filedata = re.sub(r"(?<=[^.])(\b{}\b)".format(key), value, filedata)
 
 	return filedata
 
@@ -67,11 +70,23 @@ def deleteEmptyLines(filedata):
 
 	return no_empty_lines
 
+def replacePrintedStrings(filedata):
+
+	for string in re.findall(r'(".*")|(\'.*\')', filedata):
+
+		string = ''.join(list(filter((lambda x: x!=''), string)))
+		
+		filedata = filedata.replace(string, 'codecs.decode('+ codecs.encode(string, 'rot13') +', \'rot13\')')
+	return filedata
+
+def importCodecs(filedata):
+	filedata = 'import codecs\n' + filedata
+	return filedata
+
+def oneLiner(filedata):
+	filedata = 'exec("""' + filedata.replace('\n','\\n') + '""")'
+	return filedata
 
 if __name__ == "__main__":
-	print("Variables : " + str(findVariableNames("test.py")))
-	print("Functions : " + str(findFunctionNames("test.py")))
-	print(createRandomString())
-	print(createMap(findVariableNames("test.py") + findFunctionNames("test.py")))
 	name_map = createMap(findVariableNames("test.py") + findFunctionNames("test.py"))
 	obfuscate(name_map, "test.py")
